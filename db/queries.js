@@ -13,10 +13,11 @@ const getCategoryById = async (categoryId) => {
 };
 
 const createCategory = async (name, description) => {
-  await pool.query(
-    "INSERT INTO categories (name, description) VALUES ($1, $2)",
+  const res = await pool.query(
+    "INSERT INTO categories (name, description) VALUES ($1, $2) RETURNING id",
     [name, description]
   );
+  return res.rows[0].id;
 };
 
 const updateCategory = async (categoryId, name, description) => {
@@ -47,10 +48,11 @@ const getItemById = async (categoryId, itemId) => {
 };
 
 const createItem = async (categoryId, name, description, quantity, price) => {
-  await pool.query(
-    "INSERT INTO items (category_id, name, description, quantity, price) VALUES ($1, $2, $3, $4, $5)",
+  const res = await pool.query(
+    "INSERT INTO items (category_id, name, description, quantity, price) VALUES ($1, $2, $3, $4, $5) RETURNING id",
     [categoryId, name, description, quantity, price]
   );
+  return res.rows[0].id;
 };
 
 const updateItem = async (
