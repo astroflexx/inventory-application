@@ -1,6 +1,6 @@
 const AsyncRouter = require("express-async-router").AsyncRouter;
 const {
-  getAllCategories,
+  getCategories,
   getNewCategoryForm,
   postNewCategory,
   getCategory,
@@ -11,7 +11,7 @@ const {
 
 const categoryRouter = AsyncRouter();
 
-categoryRouter.get("/", getAllCategories);
+categoryRouter.get("/", getCategories);
 
 categoryRouter.get("/new", getNewCategoryForm);
 

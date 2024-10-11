@@ -13,7 +13,8 @@ const getItemsInCategory = async (req, res) => {
 };
 
 const getNewItemForm = (req, res) => {
-  res.render("new-item");
+  const categoryId = req.params.categoryId;
+  res.render("new-item", { categoryId });
 };
 
 const postNewItem = async (req, res) => {
@@ -23,8 +24,8 @@ const postNewItem = async (req, res) => {
     categoryId,
     name,
     description,
-    quantity,
-    price
+    parseInt(quantity),
+    parseFloat(price),
   );
   res.redirect(`/categories/${categoryId}/items/${itemId}`);
 };

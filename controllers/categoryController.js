@@ -18,7 +18,7 @@ const getNewCategoryForm = (req, res) => {
 const postNewCategory = async (req, res) => {
   const { name, description } = req.body;
   const categoryId = await createCategory(name, description);
-  res.redirect(`/category/${categoryId}`);
+  res.redirect(`/categories/${categoryId}`);
 };
 
 const getCategory = async (req, res) => {
