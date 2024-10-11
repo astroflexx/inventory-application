@@ -2,8 +2,8 @@ const {
   getAllCategories,
   createCategory,
   getCategoryById,
-  updateCategory,
-  deleteCategory,
+  updateCategoryById,
+  deleteCategoryById,
 } = require("../db/queries");
 
 const getCategories = async (req, res) => {
@@ -36,13 +36,13 @@ const getUpdateCategoryForm = async (req, res) => {
 const updateCategory = async (req, res) => {
   const { categoryId } = req.params;
   const { name, description } = req.body;
-  await updateCategory(categoryId, name, description);
+  await updateCategoryById(categoryId, name, description);
   res.redirect(`/categories/${categoryId}`);
 };
 
 const deleteCategory = async (req, res) => {
   const { categoryId } = req.params;
-  await deleteCategory(categoryId);
+  await deleteCategoryById(categoryId);
   res.redirect("/categories");
 };
 

@@ -1,15 +1,23 @@
 const express = require("express");
-const db = require("../db/queries");
-const path = require("path");
+const indexRoutes = require("./routes/indexRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+const itemRoutes = require("./routes/itemRoutes");
+const errorHandler = require("./middlewares/errorHandler");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 
-app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.set("views", "./views");
 
+app.use("/", indexRoutes);
+app.use("/categories", categoryRoutes);
+app.use("/categories/:categoryId/items", itemRoutes);
+
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`App listening at port ${PORT}!`);
+  console.log(`Server is running on port ${PORT}`);
 });

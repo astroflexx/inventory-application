@@ -20,14 +20,14 @@ const createCategory = async (name, description) => {
   return res.rows[0].id;
 };
 
-const updateCategory = async (categoryId, name, description) => {
+const updateCategoryById = async (categoryId, name, description) => {
   await pool.query(
     "UPDATE categories SET name = $1, description = $2 WHERE id = $3",
     [name, description, categoryId]
   );
 };
 
-const deleteCategory = async (categoryId) => {
+const deleteCategoryById = async (categoryId) => {
   await pool.query("DELETE FROM categories WHERE id = $1", [categoryId]);
 };
 
@@ -55,7 +55,7 @@ const createItem = async (categoryId, name, description, quantity, price) => {
   return res.rows[0].id;
 };
 
-const updateItem = async (
+const updateItemById = async (
   categoryId,
   itemId,
   name,
@@ -69,7 +69,7 @@ const updateItem = async (
   );
 };
 
-const deleteItem = async (categoryId, itemId) => {
+const deleteItemById = async (categoryId, itemId) => {
   await pool.query("DELETE FROM items WHERE id = $1 AND category_id = $2", [
     itemId,
     categoryId,
@@ -80,11 +80,11 @@ module.exports = {
   getAllCategories,
   getCategoryById,
   createCategory,
-  updateCategory,
-  deleteCategory,
+  updateCategoryById,
+  deleteCategoryById,
   getAllItemsByCategoryId,
   getItemById,
   createItem,
-  updateItem,
-  deleteItem,
+  updateItemById,
+  deleteItemById,
 };

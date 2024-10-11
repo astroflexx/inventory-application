@@ -2,8 +2,8 @@ const {
   getAllItemsByCategoryId,
   getItemById,
   createItem,
-  updateItem,
-  deleteItem,
+  updateItemById,
+  deleteItemById,
 } = require("../db/queries");
 
 const getItemsInCategory = async (req, res) => {
@@ -43,18 +43,18 @@ const getUpdateItemForm = async (req, res) => {
   res.render("update-item", { item, categoryId });
 };
 
-const patchUpdateItem = async (req, res) => {
+const updateItem = async (req, res) => {
   const categoryId = req.params.categoryId;
   const itemId = req.params.itemId;
   const { name, description, quantity, price } = req.body;
-  await updateItem(categoryId, itemId, name, description, quantity, price);
+  await updateItemById(categoryId, itemId, name, description, quantity, price);
   res.redirect(`/categories/${categoryId}/items/${itemId}`);
 };
 
 const deleteItem = async (req, res) => {
   const categoryId = req.params.categoryId;
   const itemId = req.params.itemId;
-  await deleteItem(categoryId, itemId);
+  await deleteItemById(categoryId, itemId);
   res.redirect(`/categories/${categoryId}/items`);
 };
 
@@ -64,6 +64,6 @@ module.exports = {
   postNewItem,
   getItem,
   getUpdateItemForm,
-  patchUpdateItem,
+  updateItem,
   deleteItem,
 };

@@ -1,5 +1,7 @@
-const indexController = async (req, res) => {
+const getHomePage = async (req, res) => {
   res.render("index");
 };
 
-module.exports = indexController;
+module.exports = {
+  getHomePage,
+};
