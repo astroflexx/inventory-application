@@ -74,6 +74,15 @@ const deleteItem = async (categoryId, itemId) => {
   ]);
 };
 
+const checkPassword = async (inputPassword) => {
+  const query = "SELECT password FROM passwords LIMIT 1";
+  const result = await pool.query(query);
+
+  const storedPassword = result.rows[0].password;
+
+  return inputPassword === storedPassword;
+};
+
 module.exports = {
   getAllCategories,
   getCategoryById,
@@ -85,4 +94,5 @@ module.exports = {
   createItem,
   updateItem,
   deleteItem,
+  checkPassword
 };
