@@ -9,7 +9,7 @@ const {
 const getItemsInCategory = async (req, res) => {
   const categoryId = req.params.categoryId;
   const items = await getAllItemsByCategoryId(categoryId);
-  res.render("items", { items });
+  res.render("items", { items, categoryId });
 };
 
 const getNewItemForm = (req, res) => {
@@ -33,14 +33,14 @@ const getItem = async (req, res) => {
   const categoryId = req.params.categoryId;
   const itemId = req.params.itemId;
   const item = await getItemById(categoryId, itemId);
-  res.render("item", { item });
+  res.render("item", { item, categoryId });
 };
 
 const getUpdateItemForm = async (req, res) => {
   const categoryId = req.params.categoryId;
   const itemId = req.params.itemId;
   const item = await getItemById(categoryId, itemId);
-  res.render("update-item", { item });
+  res.render("update-item", { item, categoryId });
 };
 
 const patchUpdateItem = async (req, res) => {

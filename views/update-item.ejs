@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Item</title>
+  </head>
+  <body>
+    <h1>Update Item</h1>
+
+    <form
+      action="/categories/<%= categoryId %>/items/<%= item.id %>/update"
+      method="POST"
+    >
+      <label for="name">Item Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value="<%= item.name %>"
+        required
+        maxlength="100"
+      />
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" maxlength="500">
+<%= item.description %></textarea
+      >
+
+      <label for="quantity">Quantity:</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        value="<%= item.quantity %>"
+        required
+        min="1"
+      />
+
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        value="<%= item.price %>"
+        required
+        min="0.01"
+        step="0.01"
+      />
+
+      <button type="submit">Update Item</button>
+    </form>
+
+    <nav>
+      <a href="/categories/<%= categoryId %>/items/<%= item.id %>"
+        >Back to Item</a
+      >
+    </nav>
+  </body>
+</html>

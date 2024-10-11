@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Category</title>
+  </head>
+  <body>
+    <h1>Update Category</h1>
+    <form action="/categories/<%= category.id %>/update" method="POST">
+      <label for="name">Category Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value="<%= category.name %>"
+        required
+        minlength="3"
+        maxlength="100"
+      />
+      <br />
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" maxlength="500">
+        <%= category.description %>
+      </textarea>
+      <br />
+
+      <button type="submit">Update Category</button>
+    </form>
+
+    <nav>
+      <a href="/categories/<%= category.id %>">Back to Category</a>
+    </nav>
+  </body>
+</html>

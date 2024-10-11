@@ -24,11 +24,11 @@ A CRUD inventory app built with Express, Node, EJS, and PostgreSQL.
 - **GET /categories/:categoryId/update**  
   HTML form to update an existing category
 
-- **PATCH /categories/:categoryId/update**  
-  Update an existing category after authentication
+- **POST /categories/:categoryId/update**  
+  Update an existing category
 
-- **DELETE /categories/:categoryId**  
-  Delete a specific category after authentication
+- **POST /categories/:categoryId**  
+  Delete a specific category
 
 ### Items
 
@@ -47,25 +47,18 @@ A CRUD inventory app built with Express, Node, EJS, and PostgreSQL.
 - **GET /categories/:categoryId/items/:itemId/update**  
   HTML form to update an existing item
 
-- **PATCH /categories/:categoryId/items/:itemId/update**  
-  Update an existing item after authentication
+- **POST /categories/:categoryId/items/:itemId/update**  
+  Update an existing item
 
-- **DELETE /categories/:categoryId/items/:itemId**  
-  Delete a specific item after authentication
-
-### Authentication Flow
-
-- Users are redirected to the `/authenticate` page if they attempt to update or delete a category or item without being authenticated.
-- On the authentication page, users enter a secret password.
-- The entered password is checked against the stored password in the database.
-- Upon successful authentication, users are redirected back to their original request URL.
+- **POST /categories/:categoryId/items/:itemId**  
+  Delete a specific item
 
 ## Database
 
 - Uses PostgreSQL for data storage.
 - Includes two main tables:
   - **Categories**: Stores category information with fields for `id`, `name`, and `description`.
-  - **Items**: Stores item information with fields for `id`, `name`, `description`, `quantity`, `price`, and a foreign key reference to categories.
+  - **Items**: Stores item information with fields for `id`, `name`, `description`, `quantity`, `price`, and a foreign key reference to categories `category_id`.
 
 ## Getting Started
 

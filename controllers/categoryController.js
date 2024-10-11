@@ -33,7 +33,7 @@ const getUpdateCategoryForm = async (req, res) => {
   res.render("update-category", { category });
 };
 
-const patchUpdateCategory = async (req, res) => {
+const updateCategory = async (req, res) => {
   const { categoryId } = req.params;
   const { name, description } = req.body;
   await updateCategory(categoryId, name, description);
@@ -52,6 +52,6 @@ module.exports = {
   postNewCategory,
   getCategory,
   getUpdateCategoryForm,
-  patchUpdateCategory,
+  updateCategory,
   deleteCategory,
 };

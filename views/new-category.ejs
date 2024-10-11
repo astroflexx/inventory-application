@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Category</title>
+  </head>
+  <body>
+    <h1>Create New Category</h1>
+    <form action="/categories/new" method="POST">
+      <label for="name">Category Name:</label>
+      <input type="text" id="name" name="name" required minlength="3" maxlength="100" />
+      <br />
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" maxlength="500"></textarea>
+      <br />
+
+      <button type="submit">Add Category</button>
+    </form>
+
+    <nav>
+      <a href="/categories">Back to Categories</a>
+    </nav>
+  </body>
+</html>
